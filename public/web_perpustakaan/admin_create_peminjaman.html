@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denda Peminjaman</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link href="./css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="admin_dashboard.html">Admin Dashboard</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        </nav>
+
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Menu</div>
+                        <a class="nav-link" href="admin_dashboard.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        <a class="nav-link" href="admin_buku.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                            Buku
+                        </a>
+                        <a class="nav-link" href="admin_peminjaman.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-clipboard"></i></div>
+                            Peminjaman
+                        </a>
+                        <a class="nav-link" href="admin_pengaturan.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-gear"></i></div>
+                            Pengaturan
+                        </a>
+                        <a class="nav-link" href="admin_logout.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-right-from-bracket"></i></div>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    Admin
+                </div>
+            </nav>
+        </div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container">
+                    <h1 class="mt-4">Denda Peminjaman</h1>
+
+                    <form id="updatePeminjamanForm" method="POST" action="process_update_peminjaman.php">
+                        <!-- Hidden input to pass the peminjaman ID -->
+                        <input type="hidden" id="peminjamanId" name="peminjaman_id" value="">
+
+                        <div class="form-group">
+                            <label for="catatan">Catatan:</label>
+                            <textarea class="form-control" id="catatan" name="catatan" rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="denda">Denda (Rp):</label>
+                            <input type="number" class="form-control" id="denda" name="denda" min="0" step="1000" required>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Update Peminjaman</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Fetch peminjaman data based on the ID from the URL
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const peminjamanId = urlParams.get('id');
+            
+            // Set the peminjaman ID in the hidden field
+            document.getElementById('peminjamanId').value = peminjamanId;
+
+            // Here you would fetch the existing details from the server and populate the form
+            // For example:
+            // fetch(get_peminjaman_details.php?id=${peminjamanId})
+            // .then(response => response.json())
+            // .then(data => {
+            //     document.getElementById('catatan').value = data.catatan || '';
+            //     document.getElementById('denda').value = data.denda || 0;
+            // });
+        });
+    </script>
+</body>
+</html>
