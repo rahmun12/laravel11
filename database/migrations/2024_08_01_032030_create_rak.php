@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rak', function (Blueprint $table) {
-            $table->string('rak_id', 16)->primary()->nullable(false);
-            $table->string('rak_nama', 50)->nullable(false);
-            $table->string('rak_lokasi', 50)->nullable(false);
+            $table->string('rak_id')->primary()->nullable(false);
+            $table->string('rak_nama')->nullable(false);
+            $table->string('rak_lokasi')->nullable(false);
             $table->integer('rak_kapasitas')->nullable(false);
             $table->timestamps();
             

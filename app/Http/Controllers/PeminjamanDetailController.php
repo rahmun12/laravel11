@@ -6,6 +6,7 @@ use App\Models\Buku;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\PeminjamanDetail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PeminjamanDetailController extends Controller
@@ -31,7 +32,9 @@ class PeminjamanDetailController extends Controller
      */
     public function store($id)
     {
-        $user_id = 'ThisUserIsUnique';  //USER ID BISA DIGANTI DISINI UTK SESSION NTI
+        // get user id from session
+        $user = Auth::user();
+        $user_id = $user->user_id;
         $buku_detail = Buku::where('buku_id', $id)->first();
         $peminjaman_id = Str::random(16);
         $current_date = date("Y-m-d");
@@ -54,7 +57,7 @@ class PeminjamanDetailController extends Controller
         DB::table('peminjaman')->insert($data_peminjaman);
         DB::table('peminjaman_detail')->insert($data_detail);
 
-        return redirect()->route('peminjaman.siswa.index')->with('success', 'Anda telah meminjam buku ' . $buku_detail['buku_judul'] . '!');
+        return redirect()->route('peminjaman.siswa')->with('success', 'Anda telah meminjam buku ' . $buku_detail['buku_judul'] . '!');
     }
 
     /**
