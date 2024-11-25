@@ -99,6 +99,6 @@ class PeminjamanController extends Controller
     {
         Peminjaman::where('peminjaman_id', $id)->delete();
 
-        return redirect('/peminjaman')->with('success', 'Peminjaman berhasil dihapus!');
+        return redirect('/daftar-peminjaman-admin')->with('success', 'Peminjaman berhasil dihapus!');
     }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('buku_kategori_id', 16)->nullable(false);
             $table->char('buku_rak_id', 16)->nullable(false);
             $table->string('buku_judul', 40)->nullable(false);
+            $table->string('buku_urlgambar', 255)->nullable(true);
             $table->string('buku_isbn', 16)->nullable(false);
             $table->char('buku_thnpenerbit', 100)->nullable(false);
             $table->timestamps();

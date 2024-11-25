@@ -1,9 +1,9 @@
 @extends('template.layout')
 
 @if($level == 'admin')
-@section('title', 'Daftar Buku - Admin Perpustakaan')
+@section('title', 'Daftar Penerbit - Admin Perpustakaan')
 @elseif($level == 'siswa')
-@section('title', 'Daftar Buku - Perpustakaan')
+@section('title', 'Daftar Penerbit - Perpustakaan')
 @endif
 
 @section('header')
@@ -11,6 +11,62 @@
 @endsection
 
 @section('main')
+<!-- Menambahkan CSS langsung di sini -->
+<style>
+    body {
+        background-color: #f3e5f5;
+        color: #4a148c;
+    }
+
+    .btn-primary {
+        background-color: #ce93d8;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #ba68c8;
+    }
+
+    .btn-success {
+        background-color: #81c784;
+        border: none;
+    }
+
+    .btn-success:hover {
+        background-color: #66bb6a;
+    }
+
+    .form-label {
+        color: #6a1b9a;
+    }
+
+    .form-control {
+        border-color: #ce93d8;
+    }
+
+    .form-control:focus {
+        border-color: #ba68c8;
+        box-shadow: 0 0 5px rgba(186, 104, 200, 0.5);
+    }
+
+    .breadcrumb {
+        background-color: #f8f3fa;
+    }
+
+    .breadcrumb .breadcrumb-item a {
+        color: #6a1b9a;
+    }
+
+    .breadcrumb .breadcrumb-item.active {
+        color: #4a148c;
+    }
+
+    footer {
+        background-color: #f8f3fa;
+        color: #4a148c;
+    }
+</style>
+
     <div id="layoutSidenav">
         @include('template.sidebar_admin')
         <div id="layoutSidenav_content">
@@ -45,7 +101,7 @@
                     </form>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
+            <footer class="py-4 mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Web Perpustakaan 2023</div>

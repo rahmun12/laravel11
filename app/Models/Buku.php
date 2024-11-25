@@ -5,6 +5,7 @@ namespace App\Models;
 use id;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Storage;
 
 class Buku extends Model
 {
@@ -19,6 +20,7 @@ class Buku extends Model
         'buku_kategori_id',
         'buku_penerbit_id',
         'buku_rak_id',
+        'buku_urlgambar',
 
         'buku_judul',
         'buku_isbn',
@@ -79,4 +81,22 @@ class Buku extends Model
     {
         return $this->hasOne(Rak::class, 'rak_id', 'buku_rak_id');
     }
+
+
+    public static function upload($id, $data)
+    {
+        $buku = self::find($id);
+
+        if ($buku->buku_urlgambar) {
+            Storage::delete($buku->buku_urlgambar);
+        }
+
+        if ($data) {
+            $path = $data->store('public/buku_pictures');
+            $buku->buku_urlgambar = $path;
+        }
+
+        $buku->save();
+    }
+    
 }

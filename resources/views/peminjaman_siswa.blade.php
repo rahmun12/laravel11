@@ -12,6 +12,52 @@
 @endsection
 
 @section('main')
+<style>
+    body {
+        background-color: #f3e5f5;
+        color: #4a148c;
+    }
+
+    .btn-warning {
+        background-color: #ffcc80;
+        border: none;
+    }
+
+    .btn-warning:hover {
+        background-color: #ffb74d;
+    }
+
+    .btn-danger {
+        background-color: #f48fb1;
+        border: none;
+    }
+
+    .btn-danger:hover {
+        background-color: #f06292;
+    }
+
+    .table {
+        background-color: #f8f3fa;
+        color: #4a148c;
+        border-color: #ce93d8;
+    }
+
+    .table th {
+        background-color: #ba68c8;
+        color: white;
+        border-color: #ce93d8;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e1bee7;
+    }
+
+    footer {
+        background-color: #f8f3fa;
+        color: #4a148c;
+    }
+</style>
+
     <div id="layoutSidenav">
         @include('template.sidebar_admin')
         <div id="layoutSidenav_content">
@@ -23,13 +69,12 @@
                                 <thead>
                                     <tr>
                                         <th scope="row">No</th>
-                                        <th scope="row">Nama Peminjam</th>
                                         <th scope="row">Buku</th>
                                         <th scope="row">Tanggal Pinjam</th>
                                         <th scope="row">Tanggal Kembali</th>
-                                        <th scope="row">Status Kembalian</th>
                                         <th scope="row">Note</th>
                                         <th scope="row">Denda</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,7 +85,7 @@
                                             <td>{{ $peminjaman->buku_content->buku_judul }}</td>
                                             <td>{{ $peminjaman->peminjaman_content->peminjaman_tglpinjam }}</td>
                                             <td>{{ $peminjaman->peminjaman_content->peminjaman_tglkembali }}</td>
-                                            <td>{{ $peminjaman->peminjaman_content->peminjaman_statuskembalian }}</td>
+                                            {{-- <td>{{ $peminjaman->peminjaman_content->peminjaman_statuskembalian }}</td> --}}
                                             <td>{{ $peminjaman->peminjaman_content->peminjaman_note }}</td>
                                             <td>{{ $peminjaman->peminjaman_content->peminjaman_denda }}</td>
                                         </tr>
@@ -57,5 +102,5 @@
                         </div>
                     </footer>
                 </div>
-            </div>
-            @endsection
+        </div>
+    @endsection

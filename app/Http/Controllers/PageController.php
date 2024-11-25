@@ -24,7 +24,7 @@ class PageController extends Controller
             ->join('rak', 'buku.buku_rak_id', '=', 'rak.rak_id')
             ->join('penerbit', 'buku.buku_penerbit_id', '=', 'penerbit.penerbit_id')
             ->select('buku.*', 'penulis.penulis_nama', 'kategori.kategori_nama', 'rak.rak_nama', 'rak.rak_lokasi', 'penerbit.penerbit_nama')
-            ->paginate(1);
+            ->paginate(10);
         // $data = Buku::all();
         // dd($data->toArray());
 
@@ -73,8 +73,9 @@ class PageController extends Controller
 
         // return $peminjaman_all;
 
-        return view('peminjaman', ['level' => 'siswa', 'peminjaman' => $peminjaman_all]);
+        return view('peminjaman', ['level' => 'admin', 'peminjaman' => $peminjaman_all]);
     }
+    
 
     public function pengaturan()
     {
@@ -170,7 +171,7 @@ class PageController extends Controller
 
     public function peminjamanSiswa()
     {
-        $user_id = "user123";
+        $user_id = Auth::user()->user_id;
 
         $peminjaman = PeminjamanDetail::with(['peminjaman_content', 'buku_content'])
             ->whereHas(
@@ -182,9 +183,9 @@ class PageController extends Controller
 
         // return $peminjaman;
 
-        return view('peminjaman', [
+        return view('peminjaman_siswa', [
             'level' => 'siswa',
-            'data' => $peminjaman
+            'peminjaman' => $peminjaman
         ]);
     }
 

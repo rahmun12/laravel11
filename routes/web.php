@@ -26,7 +26,7 @@ Route::middleware(RoleMiddleware::class)->group(function () {
 
     Route::get('/daftar-buku-siswa', [PageController::class, 'bukuSiswa'])->name('bukuSiswa.index');
 
-    Route::get('/peminjaman-siswa', [PageController::class, 'peminjaman'])->name('peminjaman.siswa');
+    Route::get('/peminjaman-siswa', [PageController::class, 'peminjamanSiswa'])->name('peminjaman.siswa');
 
     Route::get('/daftar-pengaturan-siswa', [PageController::class, 'pengaturanSiswa'])->name('pengaturan');
 
@@ -129,7 +129,7 @@ Route::middleware(RoleMiddleware::class)->group(function () {
 
         Route::get('/edit-peminjaman', [PageController::class, 'editPeminjaman']);
 
-        Route::get('/peminjaman', [PageController::class, 'peminjaman'])->name('peminjaman.siswa');
+        // Route::get('/peminjaman', [PageController::class, 'peminjaman'])->name('peminjaman.siswa');
 
 
 
